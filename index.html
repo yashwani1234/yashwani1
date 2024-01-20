@@ -360,7 +360,7 @@
         </div>
       </div>
 
-      <form action="forms/contact.php" method="post" role="form" class="php-email-form mt-4">
+      <form action="forms/contact.php" method="post" role="form" class="php-email-form mt-4" name="submit-to-google-sheet">
         <div class="row">
           <div class="col-md-6 form-group">
             <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
@@ -398,7 +398,17 @@
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
+<script>
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbzKWiASPbMBw8Tlw9-GDIZaQpm26nQslobl5WBqyjjTuz0QEN2X2HGxtWIQhu0GPOl0/exec'
+  const form = document.forms['submit-to-google-sheet']
 
+  form.addEventListener('submit', e => {
+    e.preventDefault()
+    fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+      .then(response => console.log('Success!', response))
+      .catch(error => console.error('Error!', error.message))
+  })
+</script>
 </body>
 
 </html>
