@@ -18,9 +18,9 @@ body {
 }
 
 body::before {
-  content: "";
+   content: "";
   position: fixed;
-  background-image: #040404 url("../img/yash5.jpg");  
+  background: #040404 url("../img/yash5.jpg");
   background-size: cover;
   left: 0;
   right: 0;
